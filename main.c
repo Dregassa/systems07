@@ -5,8 +5,12 @@
 #include <errno.h>
 #include <string.h>
 
-int main (){
 
+
+int main (){
+  int fd = open("/dev/random", O_RDONLY);
+  int* a;
+  read(fd, a, sizeof(int));
 
   return 0;
 }
