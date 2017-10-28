@@ -1,4 +1,4 @@
 all: main.c
-	gcc -o random main.c
+	gcc -o test_random main.c
 run: all
-	./random
+	./test_random
