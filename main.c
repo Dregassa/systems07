@@ -8,10 +8,18 @@
 
 int our_random(){
 
-	int fd = open("/dev/random", O_RDONLY);
+	int fd = open("/dev/rando", O_RDONLY);
+	if (fd == -1){
+		printf("%s\n", strerror(errno));
+		exit(1); //indicates program failed -- SOURCE: https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html	
+	} 
 	int buffer[1];
-	read(fd, buffer, sizeof(int));
-	//printf("in func: %d\n", buffer[0]);
+
+	if ( read(fd, buffer, sizeof(int)) == -1) {
+		printf("%s\n", strerror(errno));
+		exit(1);	
+	}
+
 	return buffer[0];
 	
 }
