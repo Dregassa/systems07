@@ -6,18 +6,18 @@
 #include <string.h>
 
 
-char* our_random(){
+int our_random(){
 
 	int fd = open("/dev/random", O_RDONLY);
-	char a[];
-	read(fd, a, sizeof(int));
-	return a;
+	int buffer[1];
+	read(fd, buffer, sizeof(int));
+	//printf("in func: %d\n", buffer[0]);
+	return buffer[0];
 	
 }
 
 int main (){
-	char * rand = our_random();
-	int a[] = rand;
-	printf("%d",a[0]);
-  	return 0;
+	int rand = our_random();
+	printf("%d\n",rand);
+	return 0;
 }
